@@ -1,3 +1,6 @@
 bind_addr = ":8080"
 # log_level = "error" in this case info wont be printed because info level is lower than error level
-log_level = "debug"  
+log_level = "debug"
+
+[store]
+database_url = "user=postgres dbname=restapi_dev sslmode=disable"

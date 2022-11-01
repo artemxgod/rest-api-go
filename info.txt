@@ -1,0 +1,7 @@
+repo about code structuring in golang -- https://github.com/golang-standards/project-layout
+repo about different code practices in go -- https://github.com/codeship/go-best-practices
+extended package for db in go - https://github.com/jmoiron/sqlx
+standart package for db in go tutorial - http://go-database-sql.org
+repo that allows to do migration for db - https://github.com/golang-migrate/migrate
+
+example of migration command - migrate -path migrations/ -database postgres://postgres:postgres@localhost/restapi_dev?sslmode=disable up

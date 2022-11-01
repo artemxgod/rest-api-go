@@ -32,7 +32,7 @@ func main() {
 
 	// starting our http server
 	if err := s.Start(); err != nil {
-		log.Fatal(err)
+		log.Fatal("ERROR -", err)
 	}
 }
 
