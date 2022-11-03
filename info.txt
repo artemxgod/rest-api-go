@@ -4,4 +4,7 @@ extended package for db in go - https://github.com/jmoiron/sqlx
 standart package for db in go tutorial - http://go-database-sql.org
 repo that allows to do migration for db - https://github.com/golang-migrate/migrate
 
-example of migration command - migrate -path migrations/ -database postgres://postgres:postgres@localhost/restapi_dev?sslmode=disable up
+example of creating migrations - migrate create -ext sql -dir migrations create_users
+example of using migration command - migrate -path migrations/ -database postgres://postgres:postgres@localhost/restapi_dev?sslmode=disable up
+
+package for data validation -- https://github.com/go-ozzo/ozzo-validation

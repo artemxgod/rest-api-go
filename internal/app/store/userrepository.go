@@ -14,6 +14,13 @@ type UserRepository struct {
 /* Creates new record in database, returns modified User struct that contains ID
 Requires user struct with email and password*/
 func (r *UserRepository) Create(u *model.User) (*model.User, error) {
+	if err := u.Validate(); err != nil {
+		return nil, err
+	}
+	if err := u.BeforeCreate(); err != nil {
+		return nil, err
+	}
+	пш
 	if err := r.store.db.QueryRow("INSERT INTO users (email, encrypted_password) VALUES ($1, $2) RETURNING id",
 	u.Email, u.EncryptedPassowrd,
 	).Scan(&u.ID); err != nil {
