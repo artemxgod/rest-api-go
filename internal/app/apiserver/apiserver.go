@@ -1,76 +1,37 @@
 package apiserver
 
 import (
-	"io"
+	"database/sql"
 	"net/http"
 
-	"github.com/artemxgod/http-rest-api/internal/app/store"
-	"github.com/gorilla/mux"
-	"github.com/sirupsen/logrus"
+	"github.com/artemxgod/http-rest-api/internal/app/store/sqlstore"
 )
 
-type APIServer struct {
-	config *Config
-	logger *logrus.Logger
-	router *mux.Router
-	store *store.Store
-}
-
-// Initialize http server with config logger and mux
-func New(p_config *Config) *APIServer {
-	return &APIServer{
-		config: p_config,
-		logger: logrus.New(),
-		router: mux.NewRouter(),
-	}
-}
-
-// Starting our initialized http server
-func (s *APIServer) Start() error {
-	if err := s.configureLogger(); err != nil {
-		return err
-	}
-
-	s.configureRouter()
-
-	if err := s.configureStore(); err != nil {
-		return err
-	}
-
-	s.logger.Info("starting api server")
-
-	return http.ListenAndServe(s.config.BindAddr, s.router)
-}
-
-// Configure logger with certain level of logging
-func (s *APIServer) configureLogger() error {
-	level, err := logrus.ParseLevel(s.config.LogLevel)
+// starting the server
+func Start(config *Config) error {
+	db, err := newDB(config.DatabaseURL)
 	if err != nil {
 		return err
 	}
-	s.logger.SetLevel(level)
-	return nil
+	defer db.Close()
+
+	store := sqlstore.New(db)
+
+	s := newServer(store)
+
+	return http.ListenAndServe(config.BindAddr, s)
 }
 
-// Configure out router handlers
-func (s *APIServer) configureRouter() {
-	s.router.HandleFunc("/hello", s.handleHello())
-}
-
-func (s *APIServer) configureStore() error {
-	st := store.New(s.config.Store)
-	if err := st.Open(); err != nil {
-		return err
+//initializing database
+func newDB(databaseURL string) (*sql.DB, error) {
+	db, err := sql.Open("postgres", databaseURL)
+	if err != nil {
+		return nil, err
 	}
-	s.store = st
-	return nil
-} 
-
-// we are returning a function instead of using a function because
-// before returning default function we can specify some values
-func (s *APIServer) handleHello() http.HandlerFunc {
-	// specify values here
-	return func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "Hello")
+	// ping to check connection
+	if err := db.Ping(); err != nil {
+		return nil, err
 	}
+
+	return db, nil
 }

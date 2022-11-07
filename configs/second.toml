@@ -1,2 +1,3 @@
 bind_addr = ":8080"
 log_level = "error"
+database_url = "user=postgres dbname=restapi_dev sslmode=disable"

@@ -27,11 +27,8 @@ func main() {
 	_, err := toml.DecodeFile(configPath, config)
 	FatalOnErr(err)
 
-	// creating new http server
-	s := apiserver.New(config)
-
 	// starting our http server
-	if err := s.Start(); err != nil {
+	if err := apiserver.Start(config); err != nil {
 		log.Fatal("ERROR -", err)
 	}
 }
