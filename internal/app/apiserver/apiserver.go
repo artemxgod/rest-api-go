@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/artemxgod/http-rest-api/internal/app/store/sqlstore"
+	"github.com/gorilla/sessions"
 )
 
 // starting the server
@@ -17,7 +18,8 @@ func Start(config *Config) error {
 
 	store := sqlstore.New(db)
 
-	s := newServer(store)
+	sessionStore := sessions.NewCookieStore([]byte(config.SessionKey))
+	s := newServer(store, sessionStore)
 
 	return http.ListenAndServe(config.BindAddr, s)
 }

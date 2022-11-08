@@ -4,3 +4,4 @@ log_level = "debug"
 
 # [store] - if struct is inside struct
 database_url = "user=postgres dbname=restapi_dev sslmode=disable"
+session_key = "Q4lKlz755y4ctRUNps1Ehj6TLpqW4BAXCKVAFdBACTOAqRZfW6"
