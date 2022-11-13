@@ -8,3 +8,14 @@ example of creating migrations - migrate create -ext sql -dir migrations create_
 example of using migration command - migrate -path migrations/ -database postgres://postgres:postgres@localhost/restapi_dev?sslmode=disable up
 
 package for data validation -- https://github.com/go-ozzo/ozzo-validation
+
+
+postgres for mac guide -- https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb 
+
+example of curl usage with json - curl -X POST -d '{"email":"ac@mail.ru", "password":"password"}' -v -i 'http://localhost:8080/users'
+
+httpie allows to do request and get respond easily - https://github.com/httpie/httpie
+
+creating session --  http -v --session=user POST http://localhost:8080/sessions email=a1@mail.ru password=password
+
+request to private info -- http -v --session=user http://localhost:8080/private/whoami
