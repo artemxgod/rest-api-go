@@ -1,4 +1,4 @@
-REST-API GO -- https://youtu.be/LxJLuW5aUDQ
+REST-API GO lessons -- https://youtu.be/LxJLuW5aUDQ
 
 repo about code structuring in golang -- https://github.com/golang-standards/project-layout
 repo about different code practices in go -- https://github.com/codeship/go-best-practices
