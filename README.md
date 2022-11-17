@@ -24,18 +24,18 @@
 > Some commands from the course did not work for various reasons 
 > Here are the commands that I used instead:
 
-* example of creating migrations 
-`migrate create -ext sql -dir migrations create_users`
-* example of using migration command 
-`migrate -path migrations/ -database postgres://postgres:postgres@localhost/restapi_dev?sslmode=disable up`
-* example of curl usage with json 
-`curl -X POST -d '{"email":"ac@mail.ru", "password":"password"}' -v -i 'http://localhost:8080/users'`
-* creating session with cookie
-`http -v --session=user POST http://localhost:8080/sessions email=a1@mail.ru password=password`
-* request to private info with cookie 
-`http -v --session=user http://localhost:8080/private/whoami`
-* request with certain origin and cookie
-`http -v --session=user http://localhost:8080/private/whoami "Origin: google.com"`
+example of creating migrations 
+* `migrate create -ext sql -dir migrations create_users`
+example of using migration command 
+* `migrate -path migrations/ -database postgres://postgres:postgres@localhost/restapi_dev?sslmode=disable up`
+example of curl usage with json 
+* `curl -X POST -d '{"email":"ac@mail.ru", "password":"password"}' -v -i 'http://localhost:8080/users'`
+creating session with cookie
+* `http -v --session=user POST http://localhost:8080/sessions email=a1@mail.ru password=password`
+request to private info with cookie 
+* `http -v --session=user http://localhost:8080/private/whoami`
+request with certain origin and cookie
+* `http -v --session=user http://localhost:8080/private/whoami "Origin: google.com"`
 
 
 ## Apps
