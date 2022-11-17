@@ -1,3 +1,5 @@
+REST-API GO -- https://youtu.be/LxJLuW5aUDQ
+
 repo about code structuring in golang -- https://github.com/golang-standards/project-layout
 repo about different code practices in go -- https://github.com/codeship/go-best-practices
 extended package for db in go - https://github.com/jmoiron/sqlx
@@ -19,3 +21,5 @@ httpie allows to do request and get respond easily - https://github.com/httpie/h
 creating session --  http -v --session=user POST http://localhost:8080/sessions email=a1@mail.ru password=password
 
 request to private info -- http -v --session=user http://localhost:8080/private/whoami
+
+request with curtain origin -- http -v --session=user http://localhost:8080/private/whoami "Origin: google.com"

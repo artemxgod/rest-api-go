@@ -44,10 +44,11 @@ func (r * UserRepository) FindByEmail(email string) (*model.User, error) {
 	return u, nil
 }
 
-func (r * UserRepository) Find(id int) (*model.User, error) {
+// Search for record by ID in postgresql
+func (r * UserRepository) Find(ID int) (*model.User, error) {
 	u := &model.User{}
 	if err := r.store.db.QueryRow("SELECT id, email, encrypted_password FROM users WHERE id = $1",
-	 id).Scan(
+	 ID).Scan(
 		&u.ID, &u.Email, &u.EncryptedPassowrd); err != nil {
 			if err == sql.ErrNoRows {
 				return nil, store.ErrRecordNotFound
