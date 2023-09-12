@@ -10,9 +10,11 @@ import (
 
 var configPath string
 
-/* setting flag for our execution file.
-	Flag usage example: ./appserver -config-path ./configs/second.toml
- 	will change config file from default to second.toml */
+/*
+	 setting flag for our execution file.
+		Flag usage example: ./appserver -config-path ./configs/second.toml
+	 	will change config file from default to second.toml
+*/
 func init() {
 	flag.StringVar(&configPath, "config-path", "configs/apiserver.toml", "path to cfg file")
 }
